@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../public/style.css">
+    {{!-- for nav bar --}}
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+     <title>BOOK-RECORDS</title>
+</head>
+<body>
+    <p>GET YOUR BOOKS HERE</p>
+      <form class="searchbox">
+          <input type="search" placeholder="Search" id="searchText"/> 
+          <button type="submit" value="search" id="searchBtn">&nbsp;</button> 
+      </form>
+
+    <div id="addBtn">
+      <button type="button" class="btn btn-primary btn-lg toRight">ADD BOOK</button>
+    </div>
+    <table class="table table-striped table-dark" id="bookTable">
+      <thead>
+        <tr>
+          {{!-- <th scope="col">Bookid</th> --}}
+          <th scope="col">Bokname</th>
+          <th scope="col">Author</th>
+          <th scope="col">Price</th>
+          <th scope="col">Category</th>
+          <th scope="col">Is Avilable</th>
+          <th scope="col">Edit</th>
+        </tr>
+     </thead>
+        <tbody id="book-list"></tbody>
+    </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Your Book Here</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<div class="modal-body">
+  <form id="updateBookFrom">
+    <label for="">Book Name:</label>
+    <input type="text" id="updateBookname" name=""><br><br>
+    <label for="">Author Name:</label>
+    <input type="text" id="updateauthorname" name="authorname"><br><br>
+    <label for="price">Book Price: </label>
+    <input type="number" id="updatebookprice" name=""><br><br>
+    <label for="categorySelect">Choose Category For Book:</label>
+    <select id="updatecategorySelect">
+      <option value="None" selected>-- Select --</option>
+      <option value="CSE">CSE</option>
+      <option value="ECE">ECE</option>
+      <option value="MECH">MECHANICAL</option>
+      <option value="CIVIL">CIVIL</option>
+    </select><br><br>
+    <label for="isAvilable">Book Is Avilable??:</label>
+      <select id="updateisAvilable">
+        <option value="None" selected>-- Select --</option>
+        <option value="true">yes</option>
+        <option value="false">no</option>
+      </select><br>
+    <input type="text" id="bookId" style="display: none;" name=""><br><br>
+    <button id="updatemyAnchor">Submit</button>
+  </form> 
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+
+{{!-- Add new book --}}
+<div id="myModal" class="modal" >
+  <div class="modal-content">
+     <span class="close">&times;</span>
+     <form id="modalForm">
+          <label for="">Book Name:</label>
+          <input type="text" id="bookname" name=""><br><br>
+          <label for="">Author Name:</label>
+          <input type="text" id="authorname" name="authorname"><br><br>
+          <label for="price">Book Price: </label>
+          <input type="number" id="bookprice" name=""><br><br>
+          <label for="categorySelect">Choose Category For Book:</label>
+           <select id="categorySelect">
+              <option value="None" selected>-- Select --</option>
+              <option value="ID001">CSE</option>
+              <option value="ID002">ECE</option>
+              <option value="ID003">MECH</option>
+              <option value="ID004">CIVIL</option>
+          </select><br><br>
+          <label for="isAvilable">Book Is Avilable??:</label>
+          <select id="isAvilable">
+              <option value="None" selected>-- Select --</option>
+              <option value="ID001">yes</option>
+              <option value="ID001">no</option>
+          </select><br>
+          <button id="myAnchor">Submit</button>
+      </form>
+  </div>
+
+<script src="../../public/app.js"></script>
+</body>
+</html>
